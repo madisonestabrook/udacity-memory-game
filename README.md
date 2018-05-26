@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-The follow rubric, courtesy of Udacity, guided the development of this Memory Card Game. Udacity provided the barebones HTML and portions of the foundational CSS, but everything was customized according to my particular style. JavaScript, including any libraries, were also completely original. 
+The following rubric, courtesy of Udacity, guided the development of this Memory Card Game. Udacity provided the barebones HTML and portions of the foundational CSS, but everything was customized according to my particular style. JavaScript, including any libraries, were also completely original. 
 
 # Memory Game Project Specifications
 
