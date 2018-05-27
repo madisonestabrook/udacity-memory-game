@@ -73,18 +73,18 @@ function startGame() {
         });
         // TODO: Look up whether there's a pure-JS way of targeting classes by prefix so I don't have to list all of these "celebrate-" classes
         cards[i].classList.remove("show",
-            "open",
-            "match-animation",
-            "match",
-            "disabled",
-            "celebrate-ninja",
-            "celebrate-eye",
-            "celebrate-game",
-            "celebrate-glasses",
-            "celebrate-agent",
-            "celebrate-dice",
-            "celebrate-frog",
-            "celebrate-poo");
+                                  "open",
+                                  "match-animation",
+                                  "match",
+                                  "disabled",
+                                  "celebrate-ninja",
+                                  "celebrate-eye",
+                                  "celebrate-game",
+                                  "celebrate-glasses",
+                                  "celebrate-agent",
+                                  "celebrate-dice",
+                                  "celebrate-frog",
+                                  "celebrate-poo");
     }
     /* Since startGame() is called by other events later on, reset moves. */
     moves = 0;
@@ -195,14 +195,10 @@ the "match" class is used to determine when to play a certain sound. The match-a
 */
 
 function isAMatch() {
-    openedCards[0].classList.add("match",
-        "match-animation");
-    openedCards[1].classList.add("match",
-        "match-animation");
-    openedCards[0].classList.remove("show",
-        "open");
-    openedCards[1].classList.remove("show",
-        "open");
+    openedCards[0].classList.add("match", "match-animation");
+    openedCards[1].classList.add("match", "match-animation");
+    openedCards[0].classList.remove("show", "open");
+    openedCards[1].classList.remove("show", "open");
     openedCards = [];
 }
 
@@ -220,12 +216,8 @@ function notAMatch() {
     openedCards[1].classList.add("unmatched");
     disable();
     setTimeout(function() {
-        openedCards[0].classList.remove("show",
-            "open",
-            "unmatched");
-        openedCards[1].classList.remove("show",
-            "open",
-            "unmatched");
+        openedCards[0].classList.remove("show", "open", "unmatched");
+        openedCards[1].classList.remove("show", "open", "unmatched");
         enable();
         openedCards = [];
     }, 600);
@@ -521,7 +513,7 @@ function textRotate() {
 }
 
 /////////////////////////////////////////////////
-/* Local Storage of User's gameplay information */
+/* TODO: Local Storage of User's gameplay information */
 /////////////////////////////////////////////////
 
 // const userStorage = window.localStorage;
