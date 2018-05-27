@@ -365,6 +365,7 @@ section {
 	-webkit-transition: opacity 1000ms ease;
 	-o-transition: opacity 1000ms ease;
 	transition: opacity 1000ms ease;
+	z-index: 99999;
 }
 
 .results {

@@ -1,28 +1,29 @@
 /* jshint esversion: 6 */
+/* jshint -W031 */
 /* Global variables, mostly for DOM items, and starting values used in later functions. */
-let card = document.getElementsByClassName("card");
+let card = document.getElementsByClassName('card');
 let cards = [...card];
 let moves = 0;
-const deck = document.querySelector("#card-deck");
-const counter = document.querySelector(".moves");
-const star = document.querySelectorAll(".starred");
+const deck = document.querySelector('#card-deck');
+const counter = document.querySelector('.moves');
+const star = document.querySelectorAll('.starred');
 let stars = [...star];
-const volumeSlide = document.querySelector("#slider");
-const volReadout = document.querySelector("#volume");
+const volumeSlide = document.querySelector('#slider');
+const volReadout = document.querySelector('#volume');
 let i, gameTime, results;
-const matchedCard = document.getElementsByClassName("match");
-const modal = document.querySelector(".overlay");
+const matchedCard = document.getElementsByClassName('match');
+const modal = document.querySelector('.overlay');
 let openedCards = [];
-const restart = document.querySelector(".restart");
-const playAgainBtn = document.querySelector(".new-game");
+const restart = document.querySelector('.restart');
+const playAgainBtn = document.querySelector('.new-game');
 let second = 0,
     minute = 0;
-const min = document.querySelector(".min");
-const sec = document.querySelector(".sec");
-const soundTock = new Audio("sounds/tock.mp3");
-const matchedSound = new Audio("sounds/correct.wav");
-const unmatchedSound = new Audio("sounds/incorrect.wav");
-const win = new Audio("sounds/win.mp3");
+const min = document.querySelector('.min');
+const sec = document.querySelector('.sec');
+const soundTock = new Audio('sounds/tock.mp3');
+const matchedSound = new Audio('sounds/correct.wav');
+const unmatchedSound = new Audio('sounds/incorrect.wav');
+const win = new Audio('sounds/win.mp3');
 /*
 Shuffle function, courtesy of the Durstenfeld Shuffle (and later popularized by Donald Knuth). The differences: Fisher-Yates created
 their algorithm in 1938 "as a method for researchers to mix stuff up with pencil and paper," according to Frank Mitchell's
@@ -56,7 +57,7 @@ function shuffle(array) {
 
 /* restart button's call to the startGame() function, which essentially resets the page as it would via onload. */
 
-restart.addEventListener("click", startGame);
+restart.addEventListener('click', startGame);
 
 /* startGame is called once the document loads. */
 document.onload = startGame();
@@ -66,30 +67,30 @@ function startGame() {
     cards = shuffle(cards);
     for (i = 0; i < cards.length; i++) {
         /* Clear the deck for the DOM and then append the cards. */
-        deck.innerHTML = "";
+        deck.innerHTML = '';
         // TODO: read up on forEach and determine if this empty-array approach, which calls the cards array and calls the function to append each card to the deck
         [].forEach.call(cards, function(card) {
             deck.appendChild(card);
         });
         // TODO: Look up whether there's a pure-JS way of targeting classes by prefix so I don't have to list all of these "celebrate-" classes
-        cards[i].classList.remove("show",
-                                  "open",
-                                  "match-animation",
-                                  "match",
-                                  "disabled",
-                                  "celebrate-ninja",
-                                  "celebrate-eye",
-                                  "celebrate-game",
-                                  "celebrate-glasses",
-                                  "celebrate-agent",
-                                  "celebrate-dice",
-                                  "celebrate-frog",
-                                  "celebrate-poo");
+        cards[i].classList.remove('show',
+                                  'open',
+                                  'match-animation',
+                                  'match',
+                                  'disabled',
+                                  'celebrate-ninja',
+                                  'celebrate-eye',
+                                  'celebrate-game',
+                                  'celebrate-glasses',
+                                  'celebrate-agent',
+                                  'celebrate-dice',
+                                  'celebrate-frog',
+                                  'celebrate-poo');
     }
     /* Since startGame() is called by other events later on, reset moves. */
     moves = 0;
     /* Set the blink element on each call of startGame(). */
-    counter.innerHTML = "<span class='blink'>..waiting</span>";
+    counter.innerHTML = '<span class="blink">..waiting</span>';
     /* Set stars.length to 3 on each call of startGame(). */
     stars.length = 3;
     /*
@@ -97,17 +98,17 @@ function startGame() {
     stars, by first clearing any pre-existing classes and assignment default/starting classes.
     */
     for (i = 0; i < stars.length; i++) {
-        stars[i].className = "";
-        stars[i].classList.add("fas", "fa-star");
+        stars[i].className = '';
+        stars[i].classList.add('fas', 'fa-star');
     }
     /* Ensure second and minute are also reset on each call of startGame(). */
     second = 0;
     minute = 0;
     /* Set the clock's innerHTML, !important for each call of startGame(). */
-    min.innerHTML = "00";
-    sec.innerHTML = "00";
+    min.innerHTML = '00';
+    sec.innerHTML = '00';
     /* Set the volReadout innerHTML (below the slider) and then set the slider's value. */
-    volReadout.innerHTML = 50 + "%";
+    volReadout.innerHTML = 50 + '%';
     volumeSlide.value = 50;
     /* Call the volume function, which allows users to adjust the volume of all four audio elements playing on the page. */
     volume();
@@ -128,14 +129,10 @@ function volume() {
 
 /* Updates the volReadout element with the value of volumeSlide. At zero volume, a fontawesome icon is used in place of numbers. */
 
-volumeSlide.addEventListener("input", volume);
-volumeSlide.addEventListener("input", function(e) {
+volumeSlide.addEventListener('input', volume);
+volumeSlide.addEventListener('input', function(e) {
     volumeSlide.textContent = e.currentTarget.value;
-    if (volumeSlide.value > 0) {
-        volReadout.innerHTML = volumeSlide.textContent + "%";
-    } else {
-        volReadout.innerHTML = "<i class='fas fa-volume-off'></i>";
-    }
+    volumeSlide.value > 0 ? volReadout.innerHTML = volumeSlide.textContent + '%' : volReadout.innerHTML = '<i class="fas fa-volume-off"></i>';
 });
 
 /*
@@ -147,18 +144,18 @@ The latter is a bit much, so another TODO is looking into simplifying how gameOv
 function cardClicks() {
     for (i = 0; i < cards.length; i++) {
         card = cards[i];
-        card.addEventListener("click", flipCard);
-        card.addEventListener("click", matchEval);
-        card.addEventListener("click", gameOver);
+        card.addEventListener('click', flipCard);
+        card.addEventListener('click', matchEval);
+        card.addEventListener('click', gameOver);
     }
 }
 
 /* The flipCard() function toggles open, show, and disabled on each card via the cardClicks loop above. */
 
 function flipCard() {
-    this.classList.toggle("open");
-    this.classList.toggle("show");
-    this.classList.toggle("disabled");
+    this.classList.toggle('open');
+    this.classList.toggle('show');
+    this.classList.toggle('disabled');
 }
 
 /*
@@ -174,13 +171,13 @@ function matchEval() {
     if (length === 2) {
         /* In my game, a move is counted when two cards have been selected. Once openedCards array reaches two cards, the following evaluation occurs. */
         moveCounter();
-        if (openedCards[0].getAttribute("title") === openedCards[1].getAttribute("title")) {
+        if (openedCards[0].getAttribute('title') === openedCards[1].getAttribute('title')) {
             isAMatch();
             if (matchedCard.length < 16) {
                 /* While matchedCard class hasn't been applied to a total of 16 cards, the matched sound plays for each successful/correct moves. */
                 matchedSound.play();
             }
-        } else if (openedCards[0].getAttribute("title") !== openedCards[1].getAttribute("title")) {
+        } else if (openedCards[0].getAttribute('title') !== openedCards[1].getAttribute('title')) {
             /* When two cards are not matches, the notAMatch function is called and an unmatched sound is played. */
             notAMatch();
             unmatchedSound.playbackRate = 1.65;
@@ -195,10 +192,10 @@ the "match" class is used to determine when to play a certain sound. The match-a
 */
 
 function isAMatch() {
-    openedCards[0].classList.add("match", "match-animation");
-    openedCards[1].classList.add("match", "match-animation");
-    openedCards[0].classList.remove("show", "open");
-    openedCards[1].classList.remove("show", "open");
+    openedCards[0].classList.add('match', 'match-animation');
+    openedCards[1].classList.add('match', 'match-animation');
+    openedCards[0].classList.remove('show', 'open');
+    openedCards[1].classList.remove('show', 'open');
     openedCards = [];
 }
 
@@ -212,12 +209,12 @@ in the notAMatch function? Is there a clear way to do this (probably)?
 */
 
 function notAMatch() {
-    openedCards[0].classList.add("unmatched");
-    openedCards[1].classList.add("unmatched");
+    openedCards[0].classList.add('unmatched');
+    openedCards[1].classList.add('unmatched');
     disable();
     setTimeout(function() {
-        openedCards[0].classList.remove("show", "open", "unmatched");
-        openedCards[1].classList.remove("show", "open", "unmatched");
+        openedCards[0].classList.remove('show', 'open', 'unmatched');
+        openedCards[1].classList.remove('show', 'open', 'unmatched');
         enable();
         openedCards = [];
     }, 600);
@@ -233,7 +230,7 @@ function enable() {
     Array.prototype.filter.call(cards, function(card) {
         card.classList.remove('disabled');
         for (i = 0; i < matchedCard.length; i++) {
-            matchedCard[i].classList.add("disabled");
+            matchedCard[i].classList.add('disabled');
         }
     });
 }
@@ -250,9 +247,9 @@ other statements in this project) is quite long.
 function moveCounter() {
     moves++;
     if (moves !== 1) {
-        counter.innerHTML = moves + " moves";
+        counter.innerHTML = moves + ' moves';
     } else {
-        counter.innerHTML = moves + " move";
+        counter.innerHTML = moves + ' move';
     }
     if (moves === 1) {
         second = 0;
@@ -311,7 +308,7 @@ function startTimer() {
     gameTime = setInterval(function() {
         second++;
         if (second < 10) {
-            sec.innerHTML = "0" + second;
+            sec.innerHTML = '0' + second;
         }
         if (second >= 10) {
             sec.innerHTML = second;
@@ -319,8 +316,8 @@ function startTimer() {
         if (second === 60) {
             minute++;
             second = 0;
-            min.innerHTML = "0" + minute;
-            sec.innerHTML = "0" + second;
+            min.innerHTML = '0' + minute;
+            sec.innerHTML = '0' + second;
         }
         if (minute >= 10) {
             min.innerHTML = minute;
@@ -336,13 +333,13 @@ goes from three fully colored stars and decrements by half a star depending on t
 */
 
 function halfStar() {
-    stars[i].classList.remove("fa-star");
-    stars[i].classList.add("fa-star-half");
+    stars[i].classList.remove('fa-star');
+    stars[i].classList.add('fa-star-half');
 }
 
 function emptyStar() {
-    stars[i].classList.remove("fas", "fa-star-half");
-    stars[i].classList.add("far", "fa-star");
+    stars[i].classList.remove('fas', 'fa-star-half');
+    stars[i].classList.add('far', 'fa-star');
 }
 
 /*
@@ -361,49 +358,49 @@ function gameOver() {
         /* Stops the execution of the gameTime variable's setTimeout function. */
         clearInterval(gameTime);
         /* Sets the modal's finalTime with the current min. and sec. innerHTML values. */
-        let finalTime = min.innerHTML + ":" + sec.innerHTML;
+        let finalTime = min.innerHTML + ':' + sec.innerHTML;
         /* To allow the matchAnimations() function time to play, the modal window is set to appear after 3 seconds. */
         results = setTimeout(function() {
-            modal.style.display = "block";
+            modal.style.display = 'block';
         }, 3000);
         /*
         Declares the starRating and totalMoves variables, with starRating taking from the existing element
         and totalMoves used to display the moves returned from the moveCounter() function above.
         */
-        let starRating = document.querySelector(".stars").innerHTML;
-        let totalMoves = document.querySelector("#total-moves");
+        let starRating = document.querySelector('.stars').innerHTML;
+        let totalMoves = document.querySelector('#total-moves');
         // console.log(moves);
         /*
         Customized, silly messages are displayed on the modal. Each one is based on
         the moves variable's value returned from the moveCounter() function.
         */
         if (moves >= 8 && moves <= 9) {
-            totalMoves.innerHTML = "At " + moves + " moves, you had a perfect score!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, you had a perfect score!';
         } else if (moves > 9 && moves <= 12) {
-            totalMoves.innerHTML = "At " + moves + " moves, you did great!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, you did great!';
         } else if (moves > 12 && moves <= 15) {
-            totalMoves.innerHTML = "At " + moves + " moves, you weren't half bad!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, you weren\'t half bad!';
         } else if (moves > 15 && moves <= 18) {
-            totalMoves.innerHTML = "At " + moves + " moves, you were exactly <em>half</em> good and <em>half</em> bad!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, you were exactly <em>half</em> good and <em>half</em> bad!';
         } else if (moves > 18 && moves <= 21) {
-            totalMoves.innerHTML = "At " + moves + " moves, you're not terrible!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, you\'re not terrible!';
         } else if (moves > 21 && moves <= 24) {
-            totalMoves.innerHTML = "At " + moves + " moves, you should play again!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, you should play again!';
         } else if (moves > 24) {
-            totalMoves.innerHTML = "At " + moves + " moves, do you remember what you were playing?!";
+            totalMoves.innerHTML = 'At ' + moves + ' moves, do you remember what you were playing?!';
         }
         /* Sets the modal's respective rating and time elements based on the variables declared above. */
-        document.querySelector(".rating").innerHTML = starRating;
-        document.getElementById("totalTime").innerHTML = finalTime;
+        document.querySelector('.rating').innerHTML = starRating;
+        document.getElementById('totalTime').innerHTML = finalTime;
     }
 }
 
 /* reset() is called by the playAgainBtn event listener. The modal is hidden and startGame() is called. */
 
-playAgainBtn.addEventListener("click", reset);
+playAgainBtn.addEventListener('click', reset);
 
 function reset() {
-    modal.style.display = "none";
+    modal.style.display = 'none';
     startGame();
 }
 
@@ -416,38 +413,38 @@ classes to allow for unique animations to each pair of matching cards when calle
 function matchAnimations() {
     for (i = 0; i < cards.length; i++) {
         card = cards[i];
-        if (cards[i].getAttribute("title") === "ninja") {
+        if (cards[i].getAttribute('title') === 'ninja') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-ninja");
-        } else if (cards[i].getAttribute("title") === "glasses") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-ninja');
+        } else if (cards[i].getAttribute('title') === 'glasses') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-glasses");
-        } else if (cards[i].getAttribute("title") === "game") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-glasses');
+        } else if (cards[i].getAttribute('title') === 'game') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-game");
-        } else if (cards[i].getAttribute("title") === "frog") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-game');
+        } else if (cards[i].getAttribute('title') === 'frog') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-frog");
-        } else if (cards[i].getAttribute("title") === "eye") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-frog');
+        } else if (cards[i].getAttribute('title') === 'eye') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-eye");
-        } else if (cards[i].getAttribute("title") === "poo") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-eye');
+        } else if (cards[i].getAttribute('title') === 'poo') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-poo");
-        } else if (cards[i].getAttribute("title") === "dice") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-poo');
+        } else if (cards[i].getAttribute('title') === 'dice') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-dice");
-        } else if (cards[i].getAttribute("title") === "agent") {
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-dice');
+        } else if (cards[i].getAttribute('title') === 'agent') {
             // console.log(card);
-            card.classList.remove("match-animation");
-            card.classList.add("celebrate-agent");
+            card.classList.remove('match-animation');
+            card.classList.add('celebrate-agent');
         }
     }
 }
