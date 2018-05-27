@@ -67,11 +67,11 @@ function startGame() {
     for (i = 0; i < cards.length; i++) {
         /* Clear the deck for the DOM and then append the cards. */
         deck.innerHTML = "";
-        // To-Do: read up on forEach and determine if this empty-array approach, which calls the cards array and calls the function to append each card to the deck
+        // TODO: read up on forEach and determine if this empty-array approach, which calls the cards array and calls the function to append each card to the deck
         [].forEach.call(cards, function(card) {
             deck.appendChild(card);
         });
-        // To-Do: Look up whether there's a pure-JS way of targeting classes by prefix so I don't have to list all of these "celebrate-" classes
+        // TODO: Look up whether there's a pure-JS way of targeting classes by prefix so I don't have to list all of these "celebrate-" classes
         cards[i].classList.remove("show",
             "open",
             "match-animation",
@@ -129,7 +129,7 @@ function volume() {
 /*
 Tied these event listeners together into a cardClicks() function since each card click calls the flipCard() toggling effect function,
 the matchEval() evaluative match() and unmatched() functions, as well as evaluates whether to run the gameOver() function.
-The latter is a bit much, so another To-Do is looking into simplifying how gameOver() is called.
+The latter is a bit much, so another TODO is looking into simplifying how gameOver() is called.
 */
 
 function cardClicks() {
@@ -199,7 +199,7 @@ When two cards don't match, the unmatched class is added, which applies the red 
 during this animation sequence's .6 seconds. Following the animation, the classes are removed and the cards flip face down. The cards are then enabled,
 and the openedCards array is cleared. Note that the disable() and enable() functions are used to disable and enable ALL cards. This keeps the user
 from clicking every card, regardless of the current move. The enable() function also evaluates application of the disabled class on all cards that
-have the match class already applied. To-Do: determine whether this approach is expensive. That is, is it looping through the cards each time it's called
+have the match class already applied. TODO: determine whether this approach is expensive. That is, is it looping through the cards each time it's called
 in the notAMatch function? Is there a clear way to do this (probably)?
 */
 
@@ -239,7 +239,7 @@ The moveCounter function performs several checks. First, it iterates the moves v
 Next, it performs a simple innerHTML update so the "1 move(s)" from the Udacity project HTML template changes to
 "1 move" and then two "moves" for all moves over 1. Then it checks when to apply the halfStar() and emptyStar() functions,
 which augment the styling of the stars on the page. Moves determine the stars' "fullness", and moves is returned from
-the function for later use. To-Do: Figure out a cleaner, simpler way to perform this check. It (as well as a couple of
+the function for later use. TODO: Figure out a cleaner, simpler way to perform this check. It (as well as a couple of
 other statements in this project) is quite long.
 */
 
@@ -342,7 +342,7 @@ function emptyStar() {
 }
 
 /*
-The gameOver() function evaluates how many cards have the "match" class. It does this perhaps too often, so another To-Do is
+The gameOver() function evaluates how many cards have the "match" class. It does this perhaps too often, so another TODO is
 figuring out how to simplify when it's called. Page Speed Insights and performance monitoring via Chrome's console indicate
 it's not a resource hog, nor are any of the other functions and evaluations in this app, but I KNOW it could be simpler.
 */
@@ -404,7 +404,7 @@ function reset() {
 }
 
 /*
-To-Do: The following statements are a bit convoluted, but there's probably a more efficient, concise way of writing this. Research simplifying the code.
+TODO: The following statements are a bit convoluted, but there's probably a more efficient, concise way of writing this. Research simplifying the code.
 For example, jQuery offers a simpler way of doing this via its wildcard syntax, but the goal here was to use pure JavaScript. The following applies card-specific
 classes to allow for unique animations to each pair of matching cards when called by the gameOver() function.
 */
