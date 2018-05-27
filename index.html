@@ -11,19 +11,30 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <div class="container">
+    <main class="container">
+      <section class="overlay">
+        <div class="results">
+          <h2>And the results!</h2>
+          <div class="assessment">
+            <p><span id="total-moves"> </span></p>
+            <p>Time: <span id=totalTime> </span> </p>
+            <p>Stars: <span class="rating"></span></p>
+          </div>
+          <button class="new-game">Try Again?</button>
+        </div>
+      </section>
       <header>
         <h1 class="default-text">Memory&nbsp;<span class="txt-rotate" data-period="2000" data-rotate='["is funny.", "is deceptive.", "is a trip.", "schmemory.", "Game"]'></span></h1>
       </header>
-      <div class="score-panel">
+      <aside class="score-panel">
         <ul class="stars">
           <li><i class="fas fa-star starred"></i></li>
           <li><i class="fas fa-star starred"></i></li>
           <li><i class="fas fa-star starred"></i></li>
         </ul>
-        <p><span class="moves"></span></p>
+        <p><span class="moves" role="moves"></span></p>
         <div class="clock">
-          <span class="min">00</span>:<span class="sec">00</span>
+          <span class="min" role="minutes">00</span>:<span class="sec" role="seconds">00</span>
         </div>
         <div class="restart">
           <i class="fas fa-sync-alt"></i>
@@ -32,7 +43,7 @@
           <input type="range" min="0" max="100" value="50" step="1" id="slider">
           <div id="volume">50</div>
         </div>
-      </div>
+      </aside>
       <ul class="deck" id="card-deck">
         <li class="card" title="glasses">
           <i class="fas fa-glasses"></i>
@@ -83,18 +94,7 @@
           <i class="fas fa-eye"></i>
         </li>
       </ul>
-      <div class="overlay">
-        <div class="results">
-          <h2>And the results!</h2>
-          <div class="assessment">
-            <p><span id="total-moves"> </span></p>
-            <p>Time: <span id=totalTime> </span> </p>
-            <p>Stars: <span class="rating"></span></p>
-          </div>
-          <button class="new-game">Try Again?</button>
-        </div>
-      </div>
-    </div>
+    </main>
     <script src="js/app.js"></script>
   </body>
 </html>
