@@ -126,6 +126,18 @@ function volume() {
     win.volume = volumeSlide.value / 100;
 }
 
+/* Updates the volReadout element with the value of volumeSlide. At zero volume, a fontawesome icon is used in place of numbers. */
+
+volumeSlide.addEventListener("input", volume);
+volumeSlide.addEventListener("input", function(e) {
+    volumeSlide.textContent = e.currentTarget.value;
+    if (volumeSlide.value > 0) {
+        volReadout.innerHTML = volumeSlide.textContent + "%";
+    } else {
+        volReadout.innerHTML = "<i class='fas fa-volume-off'></i>";
+    }
+});
+
 /*
 Tied these event listeners together into a cardClicks() function since each card click calls the flipCard() toggling effect function,
 the matchEval() evaluative match() and unmatched() functions, as well as evaluates whether to run the gameOver() function.
@@ -447,23 +459,6 @@ function matchAnimations() {
         }
     }
 }
-
-/*
-jshint throws up an error when using the HTMLAudioElement prototype to create my own stop function. Not sure why. I imagine this is more
-troubling for larger web applications, but the simpler size of this one shouldn't present any issues; in testing, it hasn't (so far).
-*/
-
-/* Event listeners. */
-
-volumeSlide.addEventListener("input", volume);
-volumeSlide.addEventListener("input", function(e) {
-    volumeSlide.textContent = e.currentTarget.value;
-    if (volumeSlide.value > 0) {
-        volReadout.innerHTML = volumeSlide.textContent + "%";
-    } else {
-        volReadout.innerHTML = "<i class='fas fa-volume-off'></i>";
-    }
-});
 
 ///////////////////////////////////////////////////////
 /* Popular typing text effect borrowed from https://codepen.io/gschier/pen/jkivt */
