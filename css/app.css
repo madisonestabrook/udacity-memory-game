@@ -196,6 +196,7 @@ h1 {
 	backface-visibility: visible !important;
   animation-duration: .75s;
   animation-timing-function: cubic-bezier(0.24, 0.84, 0.25, 1);
+	font-size: 50px;
 }
 
 .deck .card.show {
@@ -550,7 +551,7 @@ h2 {
 
 	.blink,
 	.moves {
-		font-size: 18px;
+		font-size: 16px;
 	}
 	.restart {
 		font-size: 22px;
@@ -606,7 +607,7 @@ h2 {
 
 	.blink,
 	.moves {
-		font-size: 16px;
+		font-size: 14px;
 	}
 	.restart {
 		font-size: 24px;
