@@ -204,8 +204,11 @@ h1 {
 /* Deck, card, and associated interactivity styling */
 
 section {
-	width: 100%;
-	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
 }
 
 .deck {
@@ -1038,7 +1041,7 @@ h2 {
 
 	.deck .card.show,
 	.deck .card.match {
-		font-size: 75px;
+		font-size: 60px;
 	}
 }
 
@@ -1065,7 +1068,7 @@ h2 {
 
 	.blink,
 	.moves {
-		font-size: 24px;
+		font-size: 21px;
 	}
 	.restart {
 		font-size: 28px;
