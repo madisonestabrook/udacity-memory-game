@@ -12,11 +12,11 @@ Use GitHub's "Clone or Download" option to nab a copy of Memory Game — from th
 
 ### Gameplay
 
-The game is fairly simple and mirrors many online puzzle games: click or touch an item, which cues and plays an event, and work your way toward the finish line (in this game, crossing that line takes between 30 and 60 seconds, on average). Memory Game offers users 16 cards, with eight matching pairs. The objective is to match all eight pairs. 
+The game is fairly simple and mirrors many online puzzle games: click or touch an item and work your way toward the finish line (in this game, crossing that line takes between 30 and 60 seconds, on average). Memory Game offers users 16 cards, with eight matching pairs. The objective is to flip and match all eight pairs. Each restart shuffles the cards, making for a new hunt-and-find experience each time! Upon successfully completing the game, users are shown a breakdown of their score: A star rating, which is actively tracked during gameplay, the final time upon winning a game, and a special message reflective of their star rating (and my sense of humor). The user can play another game by clicking the "Try Again?" button after a win, or they can restart the game at any time. 
 
-### About the Code
+### More Info About the Game
 
-The Knuth (Fisher-Yates) shuffling algorithm is used to shuffle the deck when the game is loaded. The user can play another game by clicking the Play Again button after a win, or they can restart the game at any time. A congratulatory animation plays at the end of the game, once all  pairs have been matched, and separate animations play during both correct and incorrect guesses. Additionally, sounds are provided — a ticking clock that begins once a user completes their first matching attempt, as well as when users correctly match a pair or guess incorrectly. To offset user annoyance, a convenient volume slider has been provided, which offers textual feedback as to volume level. Upon successfully completing the game, users are shown a breakdown of their score: A star rating, which is actively tracked during gameplay, the final time upon winning a game, and a special message reflective of their star rating (and my sense of humor).  
+The Knuth (Fisher-Yates) shuffling algorithm is used to shuffle the deck when the game is loaded. A congratulatory animation plays at the end of the game, once all  pairs have been matched, and separate animations play during both correct and incorrect guesses. Additionally, sounds are provided — a ticking clock that begins once a user completes their first matching attempt, as well as when users correctly match a pair or guess incorrectly. To offset user annoyance, a convenient volume slider has been provided, which offers textual feedback as to volume level. 
 
 ### Dependencies and Contributions
 
