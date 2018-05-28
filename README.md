@@ -23,8 +23,8 @@ The Knuth (Fisher-Yates) shuffling algorithm is used to shuffle the deck when th
 There are no library dependencies in this project. However, many resources were consulted during this project's development. The header was adapted (including updating syntax to ES6 and simplying code) via the Codepen.io link in the JavaScript file. Other sources of inspiration are cited/attributed, too. Udacity Front-End Web Developer Slack channels' awesome and helpful students deserve mention for their words of wisdom. External to Udacity, though, MDN was used extensively, as well as W3C.org, various blog posts and educational materials, and the council of wise Youtubers. As is typical of my approach to this program, I attempt to deliver a bit more than what's required, and while the end result isn't exactly awe-inspiring, the underlying work and subtle flourishes do, in fact, make me quite proud. 
 
 ## Direct Dependencies
-Font-Awesome 4.6.1 for the Game Icons
-Google Fonts for the Coda Font Family
+- Font-Awesome 4.6.1 for the Game Icons
+- Google Fonts for the Coda Font Family
 
 ### TODOs
 
