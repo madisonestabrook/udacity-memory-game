@@ -178,12 +178,18 @@ function matchEval() {
   openedCards.push(this);
   let length = openedCards.length;
   if (length === 2) {
-    /* In my game, a move is counted when two cards have been selected. Once openedCards array reaches two cards, the following evaluation occurs. */
+    /* 
+    In my game, a move is counted when two cards have been selected. 
+    Once openedCards array reaches two cards, the following evaluation occurs. 
+    */
     moveCounter();
     if (openedCards[0].getAttribute('title') === openedCards[1].getAttribute('title')) {
       isAMatch();
       if (matchedCard.length < 16) {
-        /* While matchedCard class hasn't been applied to a total of 16 cards, the matched sound plays for each successful/correct moves. */
+        /* 
+        While matchedCard class hasn't been applied to a total of 16 cards, 
+        the matched sound plays for each successful/correct moves. 
+        */
         matchedSound.play();
       }
     } else if (openedCards[0].getAttribute('title') !== openedCards[1].getAttribute('title')) {
@@ -201,8 +207,10 @@ play a certain sound. The match-animation class is added as well, which applies 
 match animation. Again, this uses the custom classListChain method described later in the document.
 */
 function isAMatch() {
-  openedCards[0].classListChain.add('match').classListChain.add('match-animation').classListChain.remove('show').classListChain.remove('open');
-  openedCards[1].classListChain.add('match').classListChain.add('match-animation').classListChain.remove('show').classListChain.remove('open');
+  openedCards[0].classListChain.add('match').classListChain.add('match-animation')
+    .classListChain.remove('show').classListChain.remove('open');
+  openedCards[1].classListChain.add('match').classListChain.add('match-animation')
+    .classListChain.remove('show').classListChain.remove('open');
   openedCards = [];
 }
 /*
@@ -350,7 +358,8 @@ function halfStar() {
 }
 
 function emptyStar() {
-  stars[i].classListChain.remove('fas').classListChain.remove('fa-star-half').classListChain.add('far').classListChain.add('fa-star');
+  stars[i].classListChain.remove('fas').classListChain.remove('fa-star-half')
+    .classListChain.add('far').classListChain.add('fa-star');
 }
 /*
 This object is used several times throughout this app to allow chaining
@@ -379,7 +388,6 @@ nor are any of the other functions and evaluations in this app, but I KNOW it co
 */
 function gameOver() {
   if (matchedCard.length === 16) {
-    /* Note that I use the .pause() method. While jQuery has a stop method, creating one in pure JavaScript seemed silly given the scope of this project. */
     soundTock.pause();
     win.play();
     /* matchAnimations() is called once matched.length is 16 (all the cards). */
@@ -515,7 +523,11 @@ function textRotate() {
 /////////////////////////////////////////////////
 // const userStorage = window.localStorage;
 //
-// /* Test whether local storage is available on current user, from MDN at https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API */
+// 
+/* 
+Test whether local storage is available on current user, from 
+MDN at https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API 
+*/
 //
 // function storageAvailable(type) {
 //   try {
