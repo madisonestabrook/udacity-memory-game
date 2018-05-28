@@ -2,7 +2,13 @@
 
 Welcome to my stab at completing Udacity's Front-End Web Developer nanodegree Project #2: Memory Game. Udacity provided the barebones HTML and portions of the foundational CSS, but everything else has been customized according to my particular style (for good or ill). 
 
+### Demo
+
+A live demo is available <a href="jasonmwhite.com/memory-game/index.html">here</a>. 
+
 ### Download and Installation
+
+Use GitHub's "Clone or Download" option to nab a copy of Memory Game — from there, you can clone the files to your own GitHub repo, download the files to your computer, or use a command shell tool, such as git bash, to clone from the URL available via the "Clone or Download" button directly to your computer. Make sure not to alter the folder structure! While not complex, the styling and JavaScript, as well as the background image, are all contained in their respective directory folders and referenced accordingly. Simply open up the `index.html` file and enjoy!
 
 ### Gameplay
 
@@ -14,13 +20,21 @@ The Knuth (Fisher-Yates) shuffling algorithm is used to shuffle the deck when th
 
 ### Dependencies and Contributions
 
-There are no library dependencies in this project. However, many resources were consulted during this project's development. The header, for example, was borrowed and adapted (including updating syntax to ES6 and simplying code to conform to rubric standards) via the Codepen.io link in the JavaScript file. Other sources of inspiration are cited/attributed, too, and a few logical hurdles deserve credit mostly to the Udacity Front-End Web Developer Slack channels' awesome and helpful students. External to Udacity, though, MDN was used extensively, as well as W3C.org, various blog posts and educational materials, and the council of wise Youtubers. As is typical of my approach to this program, I attempt to deliver a bit more than what's required, and while the end result isn't exactly awe-inspiring, the underlying work and subtle flourishes do, in fact, make me quite proud. 
+There are no library dependencies in this project. However, many resources were consulted during this project's development. The header was adapted (including updating syntax to ES6 and simplying code) via the Codepen.io link in the JavaScript file. Other sources of inspiration are cited/attributed, too. Udacity Front-End Web Developer Slack channels' awesome and helpful students deserve mention for their words of wisdom. External to Udacity, though, MDN was used extensively, as well as W3C.org, various blog posts and educational materials, and the council of wise Youtubers. As is typical of my approach to this program, I attempt to deliver a bit more than what's required, and while the end result isn't exactly awe-inspiring, the underlying work and subtle flourishes do, in fact, make me quite proud. 
+
+## Direct Dependencies
+Font-Awesome 4.6.1 for the Game Icons
+Google Fonts for the Coda Font Family
+
+### TODOs
 
 I aim to continue working on it over time, including applying MVC application design prinicples to make the structure of the app less, well, unstructured. Additionally, there are a few issues that I'm still working on: simplifying code, generally, bringing everything up to ES6 while providing fallbacks, and — at some point — offering one or two extra versions of the game. For example, giving users 24 cards to match under a time limit. I'll also continue improving the logic and animations. 
 
+### Thanks!
+
 If you play the game, enjoy! If you have any suggestions whatsoever, hit me up!
 
-The project rubric follows, which details the basic requirements for Project #2: Memory Game. 
+### The Udacity rubric for Project #2: Memory Game follows 
 
 # Memory Game Project Specifications
 
