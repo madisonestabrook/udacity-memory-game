@@ -35,9 +35,6 @@ I aim to continue working on it over time, including applying MVC application de
 If you play the game, enjoy! If you have any suggestions whatsoever, hit me up!
 ------------------------------------
 
-### The Udacity rubric for Project #2: Memory Game follows 
-------------------------------------
-
 # Memory Game Project Specifications
 
 ## Game Behavior
