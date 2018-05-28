@@ -45,4 +45,3 @@ The project rubric follows, which details the basic requirements for Project #2:
 | ## Suggestions to Make Your Project Stand Out! |
 | --- |
 | <ul><li>Add CSS animations when cards are clicked, unsuccessfully matched, and successfully matched.</li><li>Add unique functionality beyond the minimum requirements (Implement a leaderboard, store game state using local storage, etc.)</li><li>Implement additional optimizations that improve the performance and user experience of the game (keyboard shortcuts for gameplay, etc).</li></ul> |
-=======
