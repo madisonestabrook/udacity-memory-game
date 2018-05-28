@@ -4,7 +4,7 @@ Welcome to my stab at completing Udacity's Front-End Web Developer nanodegree Pr
 
 ### Demo
 
-A live demo is available at jasonmwhite.com/memory-game/index.html.
+A live demo is available [here](http://www.jasonmwhite.com/memory-game/index.html).
 
 ### Download and Installation
 
